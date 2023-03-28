@@ -2,6 +2,7 @@ package com.isep.hpah.core;
 import java.util.Scanner;
 
 import com.isep.hpah.core.system.*;
+import com.isep.hpah.core.system.wizard.enemy;
 import lombok.*;
 
 @Getter @Setter
@@ -19,6 +20,18 @@ public class Main {
         System.out.println(" ");
         method.printLine(60);
         System.out.println(" ");
+        method.enterContinue();
+        method.clearConsole();
+        method.printLine(50);
+        System.out.println(
+                "You play as a young wizard or witch who has just arrived at Hogwarts, the renowned school of magic led by the famous headmaster Albus Dumbledore. " +
+                        "\nYou are immediately thrust into an exciting adventure when you discover that a dark plot is unfolding within the school's walls. " +
+                        "\nDark forces are seeking to obtain the Philosopher's Stone, a legendary artifact that could give unlimited power to whoever possesses it.\n" +
+                        "\n" +
+                        "With the help of your friends Ron Weasley and Hermione Granger, as well as your loyal professors and allies, you must navigate the dark and mysterious corridors of Hogwarts, face formidable enemies, and unravel the secrets of the Philosopher's Stone before it falls into the wrong hands. " +
+                        "\nWill you have what it takes to save the day and become a true hero of the wizarding world? " +
+                        "\nThe fate of Hogwarts and all who dwell within its walls is in your hands.");
+        method.printLine(70);
         method.enterContinue();
         method.clearConsole();
         method.printLine(70);
@@ -85,7 +98,10 @@ public class Main {
         method.enterContinue();
         method.clearConsole();
         pet.choosePet();
-        StartAdventure.stat();
+        Gamelogic.stat();
+        method.printLine(70);
+        method.enterContinue();
+        Story.chapitre(0);
         }
 
 

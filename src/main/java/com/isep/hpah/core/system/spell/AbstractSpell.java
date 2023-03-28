@@ -2,12 +2,12 @@ package com.isep.hpah.core.system.spell;
 import lombok.*;
 
 @Getter @Setter
-public class AbstractSpell {
+public abstract class AbstractSpell {
     private String nameSpell;
     private int num;
-    public static int damage;
+    private int damage;
     private int energie;
-    public static double acc;
+    public double acc;
     private int time;
     private String type;
     private double heal;

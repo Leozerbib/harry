@@ -77,7 +77,7 @@ public class wand {
 
     private static boolean isValidCore(String coreAnswer) {
         try {
-            int coreIndex = Integer.parseInt(coreAnswer);
+            int coreIndex = Integer.parseInt(coreAnswer)+1;
             if (coreIndex >= 1 && coreIndex <= Core.values().length) {
                 return true;
             }
