@@ -2,6 +2,7 @@ package com.isep.hpah.core;
 import java.util.Scanner;
 
 import com.isep.hpah.core.system.*;
+import com.isep.hpah.core.system.spell.listSpell;
 import com.isep.hpah.core.system.wizard.enemy;
 import lombok.*;
 
@@ -99,6 +100,7 @@ public class Main {
         method.clearConsole();
         pet.choosePet();
         Gamelogic.stat();
+        listSpell.SpellList();
         method.printLine(70);
         method.enterContinue();
         Story.chapitre(0);

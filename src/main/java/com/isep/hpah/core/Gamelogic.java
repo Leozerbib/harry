@@ -1,5 +1,6 @@
 package com.isep.hpah.core;
 import com.isep.hpah.core.system.spell.listSpell;
+import com.isep.hpah.core.system.spell.methodSpell;
 import com.isep.hpah.core.system.wizard.wizard;
 
 import java.util.Scanner;
@@ -21,6 +22,7 @@ public class Gamelogic {
                             "\nDef: " + player.getDef() +
                             "\nAcc: " + player.getAcc() +
                             "\nYear: " + player.getYear() +
+                            "\nExp: " + player.getExp() + "/" + player.getLevel() +
                             "\nLevel: " + player.getLevel() +
                             "\nPet: " + player.getPetPlayer() +
                             "\nHouse: " + player.getSelectedhouse()
@@ -66,48 +68,42 @@ public class Gamelogic {
             }
         public static void combatSimple(int ennemy) {
             Scanner sc = new Scanner(System.in);
-
+            method.clearConsole();
+            method.printTitle("Fight");
+            System.out.println(EnnemyList().get(ennemy).getType() + " : " + EnnemyList().get(ennemy).getName());
+            System.out.println(EnnemyList().get(ennemy).getDescrip());
+            method.enterContinue();
             while(wizard.player.getHp() > 0 && EnnemyList().get(ennemy).getHp() > 0) {
-
-
+                System.out.println(EnnemyList().get(ennemy).getType() + " : " + EnnemyList().get(ennemy).getName());
+                System.out.println("Remaining health : " + EnnemyList().get(ennemy).getHp() + "                                                 " +player.getHp());
+                System.out.println("");
+                method.printLine(60);
                 // Player's turn
                 System.out.println("Choose a spell:");
-                System.out.println("1. " + listSpell.SpellList().get(1).getNameSpell());
-                System.out.println("2. " + listSpell.SpellList().get(2).getNameSpell());
-                System.out.println("3. " + listSpell.SpellList().get(3).getNameSpell());
-                System.out.println("4. " + listSpell.SpellList().get(4).getNameSpell());
-                int spellChoice = sc.nextInt();
-                switch(spellChoice) {
-                    case 1:
-                        System.out.println(listSpell.SpellsStart.get(1).getNameSpell());
-                        wizard.validAcc(spellChoice,ennemy);
-                        break;
-                    case 2:
-                        System.out.println(listSpell.SpellsStart.get(2).getNameSpell());
-                        wizard.validAcc(spellChoice,ennemy);
-                        break;
-                    case 3:
-                        System.out.println(listSpell.SpellsStart.get(3).getNameSpell());
-                        wizard.validAcc(spellChoice,ennemy);
-                        break;
-                    case 4:
-                        System.out.println(listSpell.SpellsStart.get(4).getNameSpell());
-                        wizard.validAcc(spellChoice,ennemy);
-                        break;
-                    default:
-                        System.out.println("Invalid choice.");
-                        break;
-                }
+                System.out.println("1. " + listSpell.SpellsStart.get(0).getNameSpell());
+                System.out.println("2. " + listSpell.SpellsStart.get(1).getNameSpell());
+                System.out.println("3. " + listSpell.SpellsStart.get(2).getNameSpell());
+                System.out.println("4. " + listSpell.SpellsStart.get(3).getNameSpell());
+                method.printLine(60);
+                int spellChoice = sc.nextInt()-1;
+                method.clearConsole();
+                System.out.println(listSpell.SpellsStart.get(spellChoice).getNameSpell());
+                wizard.validAcc(spellChoice,ennemy);
+                methodSpell.heal(spellChoice);
+                System.out.println("Enemy HP: " + EnnemyList().get(ennemy).getHp());
+                method.printLine(50);
+                method.enterContinue();
+                method.clearConsole();
+                method.printLine(50);
                 System.out.println("Your ennemy attack !!!");
                 double damageEnnemy = EnnemyList().get(ennemy).getAtt() - player.getDef()* EnnemyList().get(ennemy).getAtt();
                 player.setHp(player.getHp()-damageEnnemy);
-
-                // Enemy's turn
-                // Code for enemy's attack
-
-                // Display HP
+                System.out.println("You receive " + damageEnnemy +" damage");
                 System.out.println("Player HP: " + wizard.player.getHp());
-                System.out.println("Enemy HP: " + EnnemyList().get(ennemy).getHp());
+                method.printLine(50);
+                method.enterContinue();
+                method.clearConsole();
+
             }
             EnnemyList().get(ennemy).setHp(EnnemyList().get(ennemy).getMaxHP());
 

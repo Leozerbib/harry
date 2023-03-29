@@ -92,35 +92,33 @@ public class wizard extends character {
             System.out.println("you miss");
         }
         else {
-            EnnemyList().get(j).setHp(EnnemyList().get(j).getHp()- Gamelogic.CombatSystem.damage(j,i));
+            EnnemyList().get(i).setHp(EnnemyList().get(i).getHp()- Gamelogic.CombatSystem.damage(j,i));
             System.out.println("nice shot");
+            System.out.println( "You ennemy receive " + Gamelogic.CombatSystem.damage(j, i) +" damage !!!");
         }
-        System.out.println(randomval);
-        System.out.println(touch);
-        System.out.println(valid);
         return valid;
     }
     public static int gainExp(int ennemy){
-        double Exp = enemy.EnnemyList().get(ennemy).getExp();
-        double Expeq = player.getExp() + Exp/player.getLevel();
+        double Exp = enemy.EnnemyList().get(ennemy).getExp()/EnnemyList().get(ennemy).getSeen();
+        double Expeq = player.getExp() + Exp;
         player.setExp(Expeq);
         method.printLine(50);
-        System.out.println("You gain " + Expeq + "exp");
+        System.out.println("You gain " + Exp + "exp");
         method.printLine(50);
         method.enterContinue();
         levelUp();
+        EnnemyList().get(ennemy).setSeen(player.getLevel());
         return ennemy;
     }
     public static int levelUp(){
-        int level = 1;
+        int level = player.getLevel();
             if (player.getExp() >= level) {
                 player.setLevel(player.getLevel() + 1);
                 player.setAtt(player.getAtt() + (10 * level));
                 player.setMaxHP(player.getMaxHP() + (100 * level));
                 player.setDef(player.getDef()+0.05);
                 player.setExp(player.getExp() - level);
-                level += 1;
-                method.printLine(50);
+                method.clearConsole();
                 method.printTitle("LEVEL UP : " + player.getLevel());
                 method.enterContinue();
             } else {
