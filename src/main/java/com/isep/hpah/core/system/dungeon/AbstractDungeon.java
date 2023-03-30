@@ -1,4 +1,5 @@
 package com.isep.hpah.core.system.dungeon;
+import com.isep.hpah.core.system.spell.AbstractSpell;
 import com.isep.hpah.core.system.spell.spell;
 import com.isep.hpah.core.system.wizard.AbstractEnnemy;
 import com.isep.hpah.core.system.wizard.Boss;
@@ -12,13 +13,13 @@ public abstract class AbstractDungeon {
     public String place;
     private int ennemy;
     private int boss;
-    private spell Spell;
+    private AbstractSpell Spell;
     public String description;
     public String description2;
     public String description3;
     public String description4;
     public String description5;
-    public AbstractDungeon( String namechap, String place, String description, String description2, String description3,String description4, String description5,int ennemy,int boss,spell Spell){
+    public AbstractDungeon( String namechap, String place, String description, String description2, String description3,String description4, String description5,int ennemy,int boss,AbstractSpell Spell){
         this.namechap=namechap;
         this.place=place;
         this.description=description;

@@ -1,4 +1,5 @@
 package com.isep.hpah.core;
+import com.isep.hpah.core.system.Story;
 import com.isep.hpah.core.system.spell.AbstractSpell;
 import com.isep.hpah.core.system.spell.listSpell;
 import com.isep.hpah.core.system.spell.methodSpell;
@@ -10,6 +11,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import static com.isep.hpah.core.method.scInt;
+import static com.isep.hpah.core.system.wizard.Boss.allBoss;
 import static com.isep.hpah.core.system.wizard.Boss.validee;
 import static com.isep.hpah.core.system.wizard.enemy.*;
 import static com.isep.hpah.core.system.wizard.wizard.*;
@@ -65,12 +67,17 @@ public class Gamelogic {
 
 
 
-    public class CombatSystem {
+    public static class CombatSystem {
             public static double damage(int i,int j){
                 double damage = player.attackwiz(i)-(allEnnemy.get(j).getDef()* player.attackwiz(i));
                 return damage;
 
             }
+            public static double damageTOBoss(int i,int j) {
+                double damageToBoss = player.attackwiz(i) - (allBoss.get(j).getDef() * player.attackwiz(i));
+                return damageToBoss;
+            }
+
         public static void combatSimple(int ennemy) {
             Scanner sc = new Scanner(System.in);
             method.clearConsole();
@@ -85,20 +92,25 @@ public class Gamelogic {
                 method.printLine(60);
                 // Player's turn
                 System.out.println("Choose a spell:");
-                System.out.println("1. " + listSpell.SpellsStart.get(0).getNameSpell());
-                System.out.println("2. " + listSpell.SpellsStart.get(1).getNameSpell());
-                System.out.println("3. " + listSpell.SpellsStart.get(2).getNameSpell());
-                System.out.println("4. " + listSpell.SpellsStart.get(3).getNameSpell());
+                listSpell.printSpell();
                 method.printLine(60);
-                int spellChoice = sc.nextInt()-1;
+                int spellChoice;
+                do {
+                    System.out.print("Please enter a number between 1 and " + listSpell.SpellsStart.size() + ": ");
+                    int input = method.scInt("\n->",listSpell.SpellsStart.size());
+                    spellChoice =  input - 1;
+                    if (spellChoice >= 0 && spellChoice <= listSpell.SpellsStart.size()) {
+                        valide = true;
+                    }else {
+                        valide = false;
+                    }
+                } while (valide == false);
                 method.clearConsole();
                 System.out.println(listSpell.SpellsStart.get(spellChoice).getNameSpell());
                 wizard.validAcc(spellChoice,ennemy);
                 methodSpell.heal(spellChoice);
                 System.out.println("Enemy HP: " + allEnnemy.get(ennemy).getHp());
                 method.printLine(50);
-                method.enterContinue();
-                method.clearConsole();
                 method.printLine(50);
                 System.out.println("Your ennemy attack !!!");
                 double damageEnnemy = allEnnemy.get(ennemy).getAtt() - player.getDef()* allEnnemy.get(ennemy).getAtt();
@@ -120,7 +132,7 @@ public class Gamelogic {
                 wizard.gainExp(ennemy);
             }
         }
-        public static void combatBoss(int ennemy) {
+        public static void combatBoss(int ennemy,int level) {
             Scanner sc = new Scanner(System.in);
             method.clearConsole();
             method.printTitle("Fight");
@@ -134,30 +146,35 @@ public class Gamelogic {
                 System.out.println("Remaining health : " + Boss.allBoss.get(ennemy).getHp() + "                                                 " +player.getHp());
                 System.out.println("");
                 method.printLine(60);
-                // Player's turn
-                System.out.println("Choose a spell:");
-                System.out.println("1. " + listSpell.SpellsStart.get(0).getNameSpell());
-                System.out.println("2. " + listSpell.SpellsStart.get(1).getNameSpell());
-                System.out.println("3. " + listSpell.SpellsStart.get(2).getNameSpell());
-                System.out.println("4. " + listSpell.SpellsStart.get(3).getNameSpell());
-                method.printLine(60);
-                int spellChoice = sc.nextInt()-1;
-                method.clearConsole();
-                System.out.println(listSpell.SpellsStart.get(spellChoice).getNameSpell());
-                wizard.validAcc2(spellChoice,ennemy);
-                methodSpell.heal(spellChoice);
-                System.out.println("Enemy HP: " + Boss.allBoss.get(ennemy).getHp());
-                method.printLine(50);
-                method.enterContinue();
-                method.clearConsole();
-                method.printLine(50);
-                damageBoss(0,i);
-                System.out.println("Player HP: " + wizard.player.getHp());
-                method.printLine(50);
-                method.enterContinue();
-                method.clearConsole();
-
-            }
+                while (allBoss.get(ennemy).getHp()>2*player.getAtt()) {
+                    System.out.println("Choose a spell:");
+                    listSpell.printSpell();
+                    method.printLine(60);
+                    int spellChoice;
+                    do {
+                        System.out.print("Please enter a number between 1 and " + listSpell.SpellsStart.size() + ": ");
+                        int input = method.scInt("\n->", listSpell.SpellsStart.size());
+                        spellChoice = input - 1;
+                        if (spellChoice >= 0 && spellChoice <= listSpell.SpellsStart.size()) {
+                            valide = true;
+                        } else {
+                            valide = false;
+                        }
+                    } while (valide == false);
+                    method.clearConsole();
+                    System.out.println(listSpell.SpellsStart.get(spellChoice).getNameSpell());
+                    wizard.validAcc2(spellChoice, ennemy);
+                    methodSpell.heal(spellChoice);
+                    System.out.println("Enemy HP: " + Boss.allBoss.get(ennemy).getHp());
+                    method.printLine(50);
+                    damageBoss(ennemy, i);
+                    System.out.println("Player HP: " + wizard.player.getHp());
+                    method.printLine(50);
+                    method.enterContinue();
+                    method.clearConsole();
+                }
+                Story.dungeonSwitch(level);
+                }
             Boss.allBoss.get(ennemy).setHp(Boss.allBoss.get(ennemy).getMaxHP());
 
             // Game over
@@ -165,11 +182,17 @@ public class Gamelogic {
                 System.out.println("You lose!");
             } else {
                 System.out.println("You win!");
-                wizard.gainExp(ennemy);
+                player.setExp(player.getExp() + Boss.allBoss.get(ennemy).getExp());
+                method.printLine(50);
+                System.out.println("You gain " + Boss.allBoss.get(ennemy).getExp() + "exp");
+                method.printLine(50);
+                method.enterContinue();
+                levelUp();
             }
         }
         public static double damageBoss;
         public static double degat;
+        public static boolean valide=false;
         public static void damageBoss(int ennemy,int j) {
             System.out.println("Your ennemy attack !!!");
 

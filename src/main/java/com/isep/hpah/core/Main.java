@@ -20,7 +20,6 @@ public class Main {
         System.out.println("Made by Leo Zerbib");
         Boss.BossList();
         enemy.EnnemyList();
-        System.out.println(Boss.allBoss.size());
         method.printLine(40);
         System.out.println(" ");
         method.printLine(60);
@@ -109,6 +108,11 @@ public class Main {
         method.enterContinue();
         Story.chapitre(0);
         Story.chapitre(1);
+        Story.chapitre(3);
+        Story.chapitre(4);
+        Story.chapitre(5);
+        Story.chapitre(6);
+        Story.chapitre(7);
         }
 
 

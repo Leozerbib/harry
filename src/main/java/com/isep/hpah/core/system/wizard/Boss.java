@@ -10,6 +10,7 @@ import java.util.Random;
 import static com.isep.hpah.core.system.spell.forbbidenSpell.*;
 import static com.isep.hpah.core.system.spell.spell.*;
 import static com.isep.hpah.core.system.wizard.enemy.EnnemyList;
+import static com.isep.hpah.core.system.wizard.enemy.mangemort;
 
 @Getter@Setter
 public class Boss extends AbstractEnnemy{
@@ -22,10 +23,25 @@ public class Boss extends AbstractEnnemy{
         this.spell1=spell1;
         this.spell2=spell2;
     }
-        public static Boss Voldemort = new Boss("Voldemort","Boss",300,300,2,30,0.2,"Geant serpent possedant des yeux rouge et du venin acide",2,0,0,avadaKedavra, expelliarmus, fire);
+        public static Boss TrollVol = new Boss("Troll Voldemort","Boss",200,200,3,30,0.3,"Voldemort using a troll body to survive",2,0,0,Lightning,fire,poison);
+        public static Boss Basilisk = new Boss("Basilisk","Boss",300,300,3,30,0.3,"Geant serpent possedant des yeux rouge et du venin acide",2,0,0,suctumincorruptibilis,Charge,poison);
+        public static Boss WereWolf = new Boss("WereWolf","Boss",500,500,5,50,0.3,"Professor Lupin transformed into a werewolf",2,0,0,Croc,Charge,Charge);
+        public static Boss PeterPetigrow = new Boss("Peter Petigrow","Boss",500,500,5,50,0.3,"The rat of ron was Peter Petigrow a ally of Voldemort",2,0,0,Lightning,riddikulus,fire);
+        public static Boss DoloresOmbrage = new Boss("Dolores Ombrage","Boss",500,500,7,50,0.3,"she is an unhealthy, narrow-minded and particularly perverse, hypocritical woman.",2,0,0,suctumincorruptibilis,fire,accio);
+        public static Boss BellatrixLestrange = new Boss("Bellatrix Lestrange","Boss",1000,1000,7,200,0.3,"Bellatrix was an intensely sadistic witch with brutal and violent tendencies.",2,0,0,sectumsempra,fire,poison);
+        public static Boss Mangemort = new Boss("Ma,gmort","Boss",700,700,7,150,0.3,"Bellatrix was an intensely sadistic witch with brutal and violent tendencies.",2,0,0,sectumsempra,fire,poison);
+        public static Boss Voldemort = new Boss("Lord Voldemort","Boss",1500,1500,10,300,0.4,"Voldemort était un sorcier anglais de sang-mêlé considéré comme le plus puissant et le plus dangereux des sorciers noirs de tous les temps.",2,0,0,avadaKedavra, expelliarmus, fire);
         public static ArrayList<Boss> allBoss= new ArrayList<>();
         public static List<Boss> BossList(){
+            allBoss.add(TrollVol);
+            allBoss.add(Basilisk);
+            allBoss.add(WereWolf);
+            allBoss.add(PeterPetigrow);
+            allBoss.add(DoloresOmbrage);
+            allBoss.add(Mangemort);
+            allBoss.add(BellatrixLestrange);
             allBoss.add(Voldemort);
+
             return allBoss;
 
     }
@@ -46,9 +62,6 @@ public class Boss extends AbstractEnnemy{
         else {
             validee=0;
         }
-        System.out.println(randomval);
-        System.out.println(touch);
-        System.out.println(validee);
         return validee;
     }
 }

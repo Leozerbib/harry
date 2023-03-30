@@ -23,6 +23,8 @@ public class spell extends AbstractSpell {
         public static spell accio = new spell("accio",8,20,10,1,"dmg",1,2,0.2,0.3,1.1,3);
         public static spell lumos = new spell("lumos",9,1,1,0,"tool",1,1,0,0,0,5);
         public static spell fire = new spell("fire",10,35,10,0,"dmg",0.8,1,0,0,0,6);
+        public static spell poison = new spell("poison",10,35,10,0,"dmg",0.7,1,0,0,0,6);
+        public static spell Charge = new spell("Charge",10,25,10,0,"dmg",1,1,0.1,0.2,0,0);
 
     }
 
