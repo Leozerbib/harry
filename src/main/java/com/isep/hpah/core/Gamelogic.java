@@ -145,7 +145,7 @@ public class Gamelogic {
                     method.printLine(50);
                     method.enterContinue();
                     method.clearConsole();
-                    if (allBoss.get(ennemy).getHp()<0.15*allBoss.get(ennemy).getMaxHP() && (ennemy==0||ennemy==1||ennemy==2||ennemy==4||ennemy==5||ennemy==7)){
+                    if (allBoss.get(ennemy).getHp()<0.20*allBoss.get(ennemy).getMaxHP() && (ennemy==0||ennemy==1||ennemy==2||ennemy==4||ennemy==5||ennemy==7)){
                         Story.dungeonSwitch(level);
                     }else {
                         System.out.println(allBoss.get(ennemy).getName()+" try to escape use a spell to stop your oponent!!!");
