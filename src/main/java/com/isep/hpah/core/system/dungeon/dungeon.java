@@ -110,7 +110,7 @@ public class dungeon extends AbstractDungeon {
                     "",
                     "",
                     3,
-                    6,
+                    7,
                     spell.expelliarmus
 
 

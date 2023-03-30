@@ -55,12 +55,6 @@ public class listSpell  {
         if (Choice==1){
             removeSpell();
             SpellsStart.add(j);
-            for (int i=0;i<= SpellsStart.size()-1;i++){
-                System.out.println(SpellsStart.size());
-                method.enterContinue();
-                System.out.println(i + ". " + listSpell.SpellsStart.get(i).getNameSpell());
-            }
-
         }
         else {
             System.out.println("you havn't learn the spell");

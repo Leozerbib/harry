@@ -12,7 +12,6 @@ import com.isep.hpah.core.system.wizard.wizard;
 
 import static com.isep.hpah.core.system.house.Gryffondor;
 import static com.isep.hpah.core.system.house.Slytherin;
-import static com.isep.hpah.core.system.spell.spell.reparo;
 
 public class Story {
 
@@ -52,7 +51,7 @@ public class Story {
         listSpell.addSpell(dungeon.chapters[i].getSpell());
 
     }
-    public static void dungeonSwitch(int i ){
+    public static void dungeonSwitch(int i){
         switch (i){
             case 0:
                 System.out.println("You Use "+ spell.wigardiumLeviosa.getNameSpell()+ " to make an object fall on the troll to win the fight.");
@@ -68,7 +67,7 @@ public class Story {
                 else {
                     System.out.println("You Use "+ spell.accio.getNameSpell()+ " to make the teeth of the basilisk fall and use it to defeat him.");
                     Boss.allBoss.get(1).setHp(0);
-                    System.out.println("You oponent has lost, he has " + Boss.allBoss.get(0).getHp()+"hp");
+                    System.out.println("You oponent has lost, he has " + Boss.allBoss.get(1).getHp()+"hp");
                 }
                 break;
             case 2:

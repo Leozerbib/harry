@@ -106,6 +106,22 @@ public class Main {
         listSpell.SpellList();
         method.printLine(70);
         method.enterContinue();
+        method.printTitle("Rules :");
+        System.out.println("1.  Combat is turn-based. Each player takes a turn to attack or defend.\n" +
+                "\n" +
+                "2.   Simple enemies have only one attack, while bosses use spells. Bosses have three spells, two of which are normal and one is forbidden. " +
+                "\n    The forbidden spell can only be used every fifth turn, but it is more powerful than the other spells. " +
+                "\n    Players need to heal themselves before the forbidden spell is activated.\n" +
+                "\n" +
+                "3.   At the beginning of the game, players have four spells. " +
+                "\n    These spells can be used to attack or heal, but they have a certain level of accuracy and can miss their targets. " +
+                "\n    As players progress through the chapters of the game, they can learn new spells. " +
+                "\n    To learn a new spell, players must replace one of their existing spells." +
+                "\n" +
+                "4.   When you defeat enemies, you gain experience points (XP). As you gain XP, you level up and improve your stats such as attack, HP, and defense.");
+        method.printLine(50);
+        method.enterContinue();
+        method.clearConsole();
         Story.chapitre(0);
         Story.chapitre(1);
         Story.chapitre(3);

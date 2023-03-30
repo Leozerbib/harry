@@ -37,34 +37,6 @@ public class Gamelogic {
 
         return player;
         }
-        public static void continuejourney(){
-
-        }
-        public static void printmenu(){
-            method.clearConsole();
-            method.printTitle("Menue");
-            System.out.println("choose an action");
-            method.printLine(50);
-            System.out.println("1. continue");
-            System.out.println("2. stat");
-            System.out.println("3. Exit game ");
-        }
-
-        public static void gameloop(){
-            while(isRunning){
-                printmenu();
-                int input = scInt("-> ",3);
-                if(input == 1){
-                    continuejourney();
-                } else if (input == 2) {
-                    stat();
-                }
-
-
-            }
-
-        }
-
 
 
     public static class CombatSystem {
@@ -110,7 +82,7 @@ public class Gamelogic {
                 wizard.validAcc(spellChoice,ennemy);
                 methodSpell.heal(spellChoice);
                 System.out.println("Enemy HP: " + allEnnemy.get(ennemy).getHp());
-                method.printLine(50);
+                method.enterContinue();
                 method.printLine(50);
                 System.out.println("Your ennemy attack !!!");
                 double damageEnnemy = allEnnemy.get(ennemy).getAtt() - player.getDef()* allEnnemy.get(ennemy).getAtt();
@@ -127,6 +99,7 @@ public class Gamelogic {
             // Game over
             if(wizard.player.getHp() <= 0) {
                 System.out.println("You lose!");
+                System.exit(0);
             } else {
                 System.out.println("You win!");
                 wizard.gainExp(ennemy);
@@ -146,7 +119,6 @@ public class Gamelogic {
                 System.out.println("Remaining health : " + Boss.allBoss.get(ennemy).getHp() + "                                                 " +player.getHp());
                 System.out.println("");
                 method.printLine(60);
-                while (allBoss.get(ennemy).getHp()>2*player.getAtt()) {
                     System.out.println("Choose a spell:");
                     listSpell.printSpell();
                     method.printLine(60);
@@ -166,20 +138,22 @@ public class Gamelogic {
                     wizard.validAcc2(spellChoice, ennemy);
                     methodSpell.heal(spellChoice);
                     System.out.println("Enemy HP: " + Boss.allBoss.get(ennemy).getHp());
+                    method.enterContinue();
                     method.printLine(50);
                     damageBoss(ennemy, i);
                     System.out.println("Player HP: " + wizard.player.getHp());
                     method.printLine(50);
                     method.enterContinue();
                     method.clearConsole();
-                }
-                Story.dungeonSwitch(level);
-                }
+                    if (allBoss.get(ennemy).getHp()<0.15*allBoss.get(ennemy).getMaxHP() && (ennemy==0||ennemy==1||ennemy==2||ennemy==4||ennemy==5||ennemy==7)){
+                        Story.dungeonSwitch(level);
+                    }else {
+                        System.out.println(allBoss.get(ennemy).getName()+" try to escape use a spell to stop your oponent!!!");
+                    }}
             Boss.allBoss.get(ennemy).setHp(Boss.allBoss.get(ennemy).getMaxHP());
-
-            // Game over
             if(wizard.player.getHp() <= 0) {
                 System.out.println("You lose!");
+                System.exit(0);
             } else {
                 System.out.println("You win!");
                 player.setExp(player.getExp() + Boss.allBoss.get(ennemy).getExp());

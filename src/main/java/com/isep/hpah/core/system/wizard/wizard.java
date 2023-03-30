@@ -115,7 +115,6 @@ public class wizard extends character {
         if (touch < randomval){
             System.out.println("you miss");
             method.printLine(50);
-            method.enterContinue();
         }
         else {
             Boss.allBoss.get(i).setHp(Boss.allBoss.get(i).getHp()- Gamelogic.CombatSystem.damageTOBoss(j,i));
