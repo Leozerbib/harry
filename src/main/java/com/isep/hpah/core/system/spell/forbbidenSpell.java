@@ -1,5 +1,9 @@
 package com.isep.hpah.core.system.spell;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter@Setter
 public class forbbidenSpell extends AbstractSpell {
     public forbbidenSpell(String nameSpell, int num, int damage, int energie, int time, String type,double acc,double heal,double def,double boost,int effect ) {
         super(nameSpell, num, damage, energie, time, type,acc,heal,def,boost,effect);

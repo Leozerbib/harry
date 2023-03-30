@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import com.isep.hpah.core.system.*;
 import com.isep.hpah.core.system.spell.listSpell;
+import com.isep.hpah.core.system.wizard.Boss;
 import com.isep.hpah.core.system.wizard.enemy;
 import lombok.*;
 
@@ -17,6 +18,9 @@ public class Main {
         System.out.println(" ");
         System.out.println("Welcome to HARRY POTTER RPG");
         System.out.println("Made by Leo Zerbib");
+        Boss.BossList();
+        enemy.EnnemyList();
+        System.out.println(Boss.allBoss.size());
         method.printLine(40);
         System.out.println(" ");
         method.printLine(60);
@@ -104,6 +108,7 @@ public class Main {
         method.printLine(70);
         method.enterContinue();
         Story.chapitre(0);
+        Story.chapitre(1);
         }
 
 

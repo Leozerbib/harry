@@ -9,6 +9,7 @@ import com.isep.hpah.core.method;
 import lombok.*;
 
 
+import static com.isep.hpah.core.system.spell.forbbidenSpell.avadaKedavra;
 import static com.isep.hpah.core.system.spell.spell.*;
 
 @Getter@Setter
@@ -24,6 +25,24 @@ public class listSpell  {
         SpellsStart.add(petrificusTotalus);
         SpellsStart.add(wigardiumLeviosa);
         return SpellsStart;
+    }
+    public static ArrayList<ArrayList> SpellBoss = new ArrayList<>();
+    public static List<ArrayList> SpellListBoss(){
+        //creating arrayList for new wizard
+
+        //Known Spells that you start with
+        SpellBoss.add(SpellsVOL);
+        return SpellBoss;
+    }
+    public static ArrayList<AbstractSpell> SpellsVOL = new ArrayList<>();
+    public static List<AbstractSpell> SpellListVOl(){
+        //creating arrayList for new wizard
+
+        //Known Spells that you start with
+        SpellsVOL.add(fire);
+        SpellsVOL.add(riddikulus);
+        SpellsVOL.add(avadaKedavra);
+        return SpellsVOL;
     }
     public static void addSpell(spell j){
         Scanner sc = new Scanner(System.in);

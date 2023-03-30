@@ -92,14 +92,28 @@ public class wizard extends character {
             System.out.println("you miss");
         }
         else {
-            EnnemyList().get(i).setHp(EnnemyList().get(i).getHp()- Gamelogic.CombatSystem.damage(j,i));
+            allEnnemy.get(i).setHp(allEnnemy.get(i).getHp()- Gamelogic.CombatSystem.damage(j,i));
+            System.out.println("nice shot");
+            System.out.println( "You ennemy receive " + Gamelogic.CombatSystem.damage(j, i) +" damage !!!");
+        }
+        return valid;
+    }
+    public static int validAcc2(int j,int i){
+        Random r = new Random();
+        double randomval= r.nextDouble();
+        double touch=listSpell.SpellsStart.get(j).getAcc() + wizard.player.acc;
+        if (touch < randomval){
+            System.out.println("you miss");
+        }
+        else {
+            Boss.allBoss.get(i).setHp(Boss.allBoss.get(i).getHp()- Gamelogic.CombatSystem.damage(j,i));
             System.out.println("nice shot");
             System.out.println( "You ennemy receive " + Gamelogic.CombatSystem.damage(j, i) +" damage !!!");
         }
         return valid;
     }
     public static int gainExp(int ennemy){
-        double Exp = enemy.EnnemyList().get(ennemy).getExp()/EnnemyList().get(ennemy).getSeen();
+        double Exp = enemy.allEnnemy.get(ennemy).getExp()/allEnnemy.get(ennemy).getSeen();
         double Expeq = player.getExp() + Exp;
         player.setExp(Expeq);
         method.printLine(50);
@@ -107,7 +121,7 @@ public class wizard extends character {
         method.printLine(50);
         method.enterContinue();
         levelUp();
-        EnnemyList().get(ennemy).setSeen(player.getLevel());
+        allEnnemy.get(ennemy).setSeen(player.getLevel());
         return ennemy;
     }
     public static int levelUp(){

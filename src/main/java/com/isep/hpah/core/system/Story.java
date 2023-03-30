@@ -19,10 +19,10 @@ public class Story {
         System.out.println(dungeon.chapters[i].getDescription());
         method.enterContinue();
         System.out.println(dungeon.chapters[i].getDescription2());
-        Gamelogic.CombatSystem.combatSimple(0);
+        Gamelogic.CombatSystem.combatSimple(dungeon.chapters[i].getEnnemy());
         System.out.println("nice Job but there is a other one behind you");
-        Gamelogic.CombatSystem.combatSimple(0);
-        listSpell.addSpell(spell.reparo);
+        Gamelogic.CombatSystem.combatBoss(dungeon.chapters[i].getBoss());
+        listSpell.addSpell(dungeon.chapters[i].getSpell());
         Gamelogic.CombatSystem.combatSimple(1);
 
 
