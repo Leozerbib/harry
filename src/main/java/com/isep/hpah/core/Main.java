@@ -17,7 +17,7 @@ public class Main {
         System.out.println(" ");
         method.printLine(40);
         System.out.println(" ");
-        System.out.println("\u001B[40m"+"Welcome to HARRY POTTER RPG");
+        System.out.println("Welcome to HARRY POTTER RPG");
         System.out.println("Made by Leo Zerbib");
         Boss.BossList();
         enemy.EnnemyList();
