@@ -39,9 +39,10 @@ public class listSpell  {
     public static void addSpell(AbstractSpell j){
         Scanner sc = new Scanner(System.in);
         method.printLine(60);
-        System.out.println("You finish your first year at Hogwart, you can learn a new spell.");
+        System.out.println("You finish your year at Hogwart, you can learn a new spell.");
         System.out.println("Do you want to learn : " + j.getNameSpell() + " if you do you will have to remove that you already know.");
-        System.out.println(j.getNameSpell() +
+        System.out.println(
+                "\u001B[31m"+j.getNameSpell() +
                 "\n Damage : " + j.getDamage() +
                 "\n Heal : " + j.getHeal() +
                 "\n Acc : " + j.getAcc()

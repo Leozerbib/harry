@@ -2,6 +2,7 @@ package com.isep.hpah.core;
 import java.util.Scanner;
 
 import com.isep.hpah.core.system.*;
+import com.isep.hpah.core.system.potion.potion;
 import com.isep.hpah.core.system.spell.listSpell;
 import com.isep.hpah.core.system.wizard.Boss;
 import com.isep.hpah.core.system.wizard.enemy;
@@ -16,7 +17,7 @@ public class Main {
         System.out.println(" ");
         method.printLine(40);
         System.out.println(" ");
-        System.out.println("Welcome to HARRY POTTER RPG");
+        System.out.println("\u001B[40m"+"Welcome to HARRY POTTER RPG");
         System.out.println("Made by Leo Zerbib");
         Boss.BossList();
         enemy.EnnemyList();
@@ -104,6 +105,7 @@ public class Main {
         pet.choosePet();
         Gamelogic.stat();
         listSpell.SpellList();
+        potion.potion();
         method.printLine(70);
         method.enterContinue();
         method.printTitle("Rules :");

@@ -1,5 +1,6 @@
 package com.isep.hpah.core;
 import com.isep.hpah.core.system.Story;
+import com.isep.hpah.core.system.potion.potionMethod;
 import com.isep.hpah.core.system.spell.AbstractSpell;
 import com.isep.hpah.core.system.spell.listSpell;
 import com.isep.hpah.core.system.spell.methodSpell;
@@ -62,6 +63,7 @@ public class Gamelogic {
                 System.out.println("Remaining health : " + allEnnemy.get(ennemy).getHp() + "                                                 " +player.getHp());
                 System.out.println("");
                 method.printLine(60);
+                potionMethod.potionUse();
                 // Player's turn
                 System.out.println("Choose a spell:");
                 listSpell.printSpell();
@@ -81,14 +83,14 @@ public class Gamelogic {
                 System.out.println(listSpell.SpellsStart.get(spellChoice).getNameSpell());
                 wizard.validAcc(spellChoice,ennemy);
                 methodSpell.heal(spellChoice);
-                System.out.println("Enemy HP: " + allEnnemy.get(ennemy).getHp());
+                System.out.println("\u001B[31m"+"Enemy HP: " + allEnnemy.get(ennemy).getHp()+"\033[0m");
                 method.enterContinue();
                 method.printLine(50);
                 System.out.println("Your ennemy attack !!!");
                 double damageEnnemy = allEnnemy.get(ennemy).getAtt() - player.getDef()* allEnnemy.get(ennemy).getAtt();
                 player.setHp(player.getHp()-damageEnnemy);
                 System.out.println("You receive " + damageEnnemy +" damage");
-                System.out.println("Player HP: " + wizard.player.getHp());
+                System.out.println("\u001B[31m"+"Player HP: " + wizard.player.getHp()+"\033[0m");
                 method.printLine(50);
                 method.enterContinue();
                 method.clearConsole();
@@ -98,11 +100,13 @@ public class Gamelogic {
 
             // Game over
             if(wizard.player.getHp() <= 0) {
-                System.out.println("You lose!");
+                System.out.println("\u001B[31m"+"You lose!"+"\033[0m");
                 System.exit(0);
             } else {
-                System.out.println("You win!");
+                System.out.println("\u001B[32m"+"You win!"+"\033[0m");
+                potionMethod.addpotion(allEnnemy.get(ennemy).getNumber(),allEnnemy.get(ennemy).getPotion());
                 wizard.gainExp(ennemy);
+
             }
         }
         public static void combatBoss(int ennemy,int level) {
@@ -119,6 +123,7 @@ public class Gamelogic {
                 System.out.println("Remaining health : " + Boss.allBoss.get(ennemy).getHp() + "                                                 " +player.getHp());
                 System.out.println("");
                 method.printLine(60);
+                potionMethod.potionUse();
                     System.out.println("Choose a spell:");
                     listSpell.printSpell();
                     method.printLine(60);
@@ -137,11 +142,11 @@ public class Gamelogic {
                     System.out.println(listSpell.SpellsStart.get(spellChoice).getNameSpell());
                     wizard.validAcc2(spellChoice, ennemy);
                     methodSpell.heal(spellChoice);
-                    System.out.println("Enemy HP: " + Boss.allBoss.get(ennemy).getHp());
+                    System.out.println("\u001B[31m"+"Enemy HP: " + Boss.allBoss.get(ennemy).getHp()+"\033[0m");
                     method.enterContinue();
                     method.printLine(50);
                     damageBoss(ennemy, i);
-                    System.out.println("Player HP: " + wizard.player.getHp());
+                    System.out.println("\u001B[31m"+"Player HP: " + wizard.player.getHp()+"\033[0m");
                     method.printLine(50);
                     method.enterContinue();
                     method.clearConsole();
@@ -152,14 +157,15 @@ public class Gamelogic {
                     }}
             Boss.allBoss.get(ennemy).setHp(Boss.allBoss.get(ennemy).getMaxHP());
             if(wizard.player.getHp() <= 0) {
-                System.out.println("You lose!");
+                System.out.println("\u001B[31m"+"You lose!"+"\033[0m");
                 System.exit(0);
             } else {
-                System.out.println("You win!");
+                System.out.println("\u001B[32m"+"You win!"+"\033[0m");
                 player.setExp(player.getExp() + Boss.allBoss.get(ennemy).getExp());
                 method.printLine(50);
                 System.out.println("You gain " + Boss.allBoss.get(ennemy).getExp() + "exp");
                 method.printLine(50);
+                potionMethod.addpotion(allBoss.get(ennemy).getNumber(),allBoss.get(ennemy).getPotion());
                 method.enterContinue();
                 levelUp();
             }
@@ -176,7 +182,7 @@ public class Gamelogic {
                 Boss.validAccBoss(Boss.allBoss.get(ennemy).getSpell());
                 System.out.println(Boss.allBoss.get(ennemy).getSpell().getNameSpell());
                 if (validee == 1) {
-                    System.out.println("miss");
+                    System.out.println("\u001B[33m"+"miss"+"\033[0m");
                 } else {
                     player.setHp(player.getHp() - damageBoss);
 
@@ -192,7 +198,7 @@ public class Gamelogic {
                     Boss.validAccBoss(Boss.allBoss.get(ennemy).getSpell1());
                     System.out.println(Boss.allBoss.get(ennemy).getSpell1().getNameSpell());
                     if (validee == 1) {
-                        System.out.println("miss");
+                        System.out.println("\u001B[33m"+"miss"+"\033[0m");
                     } else {
                         player.setHp(player.getHp() - damageBoss);
 
@@ -204,7 +210,7 @@ public class Gamelogic {
                     Boss.validAccBoss(Boss.allBoss.get(ennemy).getSpell2());
                     System.out.println(Boss.allBoss.get(ennemy).getSpell2().getNameSpell());
                     if (validee == 1) {
-                        System.out.println("miss");
+                        System.out.println("\u001B[33m"+"miss"+"\033[0m");
                     } else {
                         player.setHp(player.getHp() - damageBoss);
 

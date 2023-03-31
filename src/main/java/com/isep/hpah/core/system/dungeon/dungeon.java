@@ -17,8 +17,8 @@ public class dungeon extends AbstractDungeon {
     }
 
     public static final dungeon[] chapters = new dungeon[]{
-            new dungeon(
-                    "Chapter 1: The philosopher stone",
+            new dungeon("\u001B[33m"+
+                    "Chapter 1: The philosopher stone"+"\033[0m",
                     "The toilet of the dungeon",
                     "On your first day at Hogwarts, you are sorted into Gryffindor House and meet your new friends Ron Weasley and Hermione Granger. " +
                             "\nAs you attend classes and explore the castle, you begin to uncover strange happenings, including a break-in at Gringotts Wizarding Bank and the appearance of a three-headed dog guarding a trapdoor.\n" +
@@ -41,8 +41,8 @@ public class dungeon extends AbstractDungeon {
                     0,
                     spell.accio
             ),
-            new dungeon(
-                    "Chapitre 2 : The Chamber of Secrets",
+            new dungeon("\u001B[33m"+
+                    "Chapitre 2 : The Chamber of Secrets"+"\033[0m",
                     "The Chamber of Secrets",
                     "As " + player.getName() + " you return to Hogwarts for your second year, excited to reunite with your friends and continue your magical education. " +
                             "\nHowever, strange things begin to happen once again when students are petrified by an unknown creature roaming the castle.\n" +
@@ -72,9 +72,9 @@ public class dungeon extends AbstractDungeon {
                     spell.expectoPatronum
 
             ),
-            new dungeon(
-                    "",
-                    "",
+            new dungeon("\u001B[33m"+
+                    "Chapitre 3 : The Prisonner of Azkaban"+"\033[0m",
+                    "Lake in the Forbidden Forest\n",
                     "",
                     "",
                     "",
@@ -101,9 +101,9 @@ public class dungeon extends AbstractDungeon {
 
 
                     ),
-            new dungeon(
-                    "",
-                    "",
+            new dungeon("\u001B[33m"+
+                    "Chapitre 4 : The Goblet of Fire"+"\033[0m",
+                    "Little Hangleton Cemetery\n",
                     "",
                     "",
                     "",
@@ -115,9 +115,9 @@ public class dungeon extends AbstractDungeon {
 
 
             ),
-            new dungeon(
-                    "",
-                    "",
+            new dungeon("\u001B[33m"+
+                    "Chapitre 5 : The Order of the Phenix"+"\033[0m",
+                    "Hogwarts Examination Room\n",
                     "",
                     "",
                     "",
@@ -129,9 +129,9 @@ public class dungeon extends AbstractDungeon {
 
 
             ),
-            new dungeon(
-                    "",
-                    "",
+            new dungeon("\u001B[33m"+
+                    "Chapitre 6 : The Half-Blood Prince"+"\033[0m",
+                    "Astronomy Tower\n",
                     "",
                     "",
                     "",
@@ -143,16 +143,16 @@ public class dungeon extends AbstractDungeon {
 
 
             ),
-            new dungeon(
-                    "",
-                    "",
+            new dungeon("\u001B[33m"+
+                    "Chapitre 7 : The Deathly Hallows"+"\033[0m",
+                    "Hogwarts\n",
                     "",
                     "",
                     "",
                     "",
                     "",
                     6,
-                    7,
+                    8,
                     forbbidenSpell.avadaKedavra
 
 

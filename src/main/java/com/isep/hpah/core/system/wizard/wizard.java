@@ -50,7 +50,7 @@ public class wizard extends character {
                 break;
         }
     }
-    public static wizard player = new wizard(Main.name,"player",1000,1000,0,10,0.1,sorting_hat.selectedhouse,pet.petPlayer,1,1,0);
+    public static wizard player = new wizard(Main.name,"player",500,500,0,20,0.1,sorting_hat.selectedhouse,pet.petPlayer,1,1,0);
 
 
 
@@ -147,18 +147,19 @@ public class wizard extends character {
         while (player.getExp() >= level) {
             if (player.getExp() >= level) {
                 player.setLevel(player.getLevel() + 1);
-                player.setAtt(player.getAtt() + (10 * level));
-                player.setMaxHP(player.getMaxHP() + (100 * level));
-                player.setDef(player.getDef() + 0.05);
+                player.setAtt(player.getAtt() + (15 * level));
+                player.setMaxHP(player.getMaxHP() + (130 * level));
+                player.setDef(player.getDef() + 0.025);
                 player.setExp(player.getExp() - level);
                 method.clearConsole();
                 method.printTitle("LEVEL UP : " + player.getLevel());
                 method.enterContinue();
+                Gamelogic.stat();
             } else {
                 method.printLine(50);
                 System.out.println("You soon will gain a level !!");
             }
-            Gamelogic.stat();
+
             method.enterContinue();
         }
         return level;

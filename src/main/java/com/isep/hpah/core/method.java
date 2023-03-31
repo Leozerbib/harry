@@ -13,8 +13,10 @@ public class method {
         System.out.println(" ");
     }
     public static void enterContinue(){
-        System.out.println("Click on space to continue");
+        System.out.println("Click on enter 2 time to continue");
         sc.nextLine();
+        sc.nextLine();
+
 
     }
     public static int scInt(String prompt, int userChoice){
